@@ -36,6 +36,8 @@ const dummyPatients = [
 const PatientList = () => {
   const [patients, setPatients] = useState(dummyPatients);
   const [searchTerm, setSearchTerm] = useState("");
+  const [editPatient, setEditPatient] = useState(null); // To store patient being edited
+  const [showEditForm, setShowEditForm] = useState(false);
 
   const filteredPatients = patients.filter((patient) =>
     patient.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -43,11 +45,30 @@ const PatientList = () => {
 
   const handleAddPatient = () => {
     alert("Add Patient Form will open here");
-    // navigation logic if using routing: navigate('/SamplePatient');
   };
 
   const handleDelete = (id) => {
     setPatients(patients.filter((p) => p.id !== id));
+  };
+
+  const handleEdit = (patient) => {
+    setEditPatient({ ...patient }); // clone object
+    setShowEditForm(true);
+  };
+
+  const handleUpdate = () => {
+    setPatients((prev) =>
+      prev.map((p) => (p.id === editPatient.id ? editPatient : p))
+    );
+    setShowEditForm(false);
+  };
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setEditPatient((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   return (
@@ -60,10 +81,10 @@ const PatientList = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button
-          className="bg-[#840000] text-white px-4 py-2 rounded"
-        >
-          <a href="/Patient" onClick={handleAddPatient}>+ Add Patient</a>
+        <button className="bg-[#840000] text-white px-4 py-2 rounded">
+          <a href="/Patient" onClick={handleAddPatient}>
+            + Add Patient
+          </a>
         </button>
       </div>
 
@@ -110,7 +131,12 @@ const PatientList = () => {
                 <td className="border p-2">{patient.createdOn}</td>
                 <td className="border p-2">{patient.updatedOn}</td>
                 <td className="border p-2">
-                  <button className="text-blue-600 hover:underline mr-2">Edit</button>
+                  <button
+                    className="text-blue-600 hover:underline mr-2"
+                    onClick={() => handleEdit(patient)}
+                  >
+                    Edit
+                  </button>
                   <button
                     onClick={() => handleDelete(patient.id)}
                     className="text-red-600 hover:underline"
@@ -130,6 +156,61 @@ const PatientList = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Edit Form Modal */}
+      {showEditForm && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-10">
+          <div className="bg-white p-6 rounded shadow-lg w-2/3">
+            <h2 className="text-xl font-bold mb-4">Edit Patient</h2>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                "name",
+                "address",
+                "mobileNo",
+                "guardianName",
+                "guardianRelationship",
+                "email",
+                "password",
+                "bloodGroup",
+                "frequency",
+              ].map((field) => (
+                <input
+                  key={field}
+                  type="text"
+                  name={field}
+                  value={editPatient[field]}
+                  onChange={handleChange}
+                  placeholder={field}
+                  className="border p-2 rounded"
+                />
+              ))}
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="isActive"
+                  checked={editPatient.isActive}
+                  onChange={handleChange}
+                />
+                Active
+              </label>
+            </div>
+            <div className="mt-4 flex justify-end gap-2">
+              <button
+                onClick={() => setShowEditForm(false)}
+                className="bg-gray-400 text-white px-4 py-2 rounded"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleUpdate}
+                className="bg-green-600 text-white px-4 py-2 rounded"
+              >
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
