@@ -52,10 +52,9 @@ const EmergencyRequestList = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button
-          onClick={handleAddRequest}
           className="bg-[#840000] text-white px-4 py-2 rounded"
         >
-          <a href="/AddEmergencyRequest">+ Add Request</a>
+          <a href="/RequestBlood" onClick={handleAddRequest}>+ Add Request</a>
         </button>
       </div>
 

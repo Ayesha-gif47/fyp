@@ -61,10 +61,9 @@ const PatientList = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button
-          onClick={handleAddPatient}
           className="bg-[#840000] text-white px-4 py-2 rounded"
         >
-          <a href="/SamplePatient">+ Add Patient</a>
+          <a href="/Patient" onClick={handleAddPatient}>+ Add Patient</a>
         </button>
       </div>
 

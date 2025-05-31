@@ -75,7 +75,7 @@ const AdminSidebar = ({ setCurrentView }) => {
         </button>
 
         <button className="flex items-center gap-2 hover:text-[#840000]">
-          <a href="/" className="flex gap-2">
+          <a href="/changepassword" className="flex gap-2">
             <KeyRound size={20} /> Change Password
           </a>
         </button>

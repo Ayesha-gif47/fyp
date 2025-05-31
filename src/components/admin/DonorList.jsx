@@ -58,10 +58,9 @@ const DonorList = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button
-          onClick={handleAddDonor}
           className="bg-[#840000] text-white px-4 py-2 rounded "
         >
-          <a href="/SampleDonor">+ Add Donor</a>
+          <a href="/SampleDonor" onClick={handleAddDonor} >+ Add Donor</a>
         </button>
       </div>
 
