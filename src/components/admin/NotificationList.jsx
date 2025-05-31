@@ -198,17 +198,17 @@ const NotificationList = () => {
 
             <div className="flex justify-end mt-6 space-x-4">
               <button
-                onClick={() => setEditData(null)}
-                className="text-gray-600 hover:text-black"
+                onClick={handleSave}
+                className="bg-[#840000] text-white px-4 py-2 rounded"
               >
-                Cancel
+                Save Change
               </button>
               <button
-                onClick={handleSave}
-                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                onClick={() => setEditData(null)}
+                className="bg-gray-300 text-black px-4 py-2 rounded"
               >
-                Save
-              </button>
+                Cancel
+              </button>          
             </div>
           </div>
         </div>

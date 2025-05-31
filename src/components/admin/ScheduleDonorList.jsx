@@ -302,17 +302,17 @@ const ScheduleDonorList = () => {
             {/* Buttons */}
             <div className="mt-6 flex justify-end space-x-4">
               <button
-                onClick={handleCancel}
-                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                onClick={handleSave}
+                className="bg-[#840000] text-white px-4 py-2 rounded"
               >
-                Cancel
+                Save Change
               </button>
               <button
-                onClick={handleSave}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                onClick={handleCancel}
+                className="bg-gray-300 text-black px-4 py-2 rounded"
               >
-                Save
-              </button>
+                Cancel
+              </button> 
             </div>
           </div>
         </div>

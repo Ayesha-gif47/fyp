@@ -198,16 +198,16 @@ const EmergencyRequestList = () => {
 
             <div className="flex justify-end gap-3 mt-6">
               <button
+                onClick={handleSave}
+                className="bg-[#840000] text-white px-4 py-2 rounded"
+              >
+                Save Change
+              </button>
+              <button
                 onClick={() => setShowModal(false)}
                 className="bg-gray-300 text-black px-4 py-2 rounded"
               >
                 Cancel
-              </button>
-              <button
-                onClick={handleSave}
-                className="bg-green-600 text-white px-4 py-2 rounded"
-              >
-                Save
               </button>
             </div>
           </div>

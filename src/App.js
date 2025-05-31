@@ -27,6 +27,8 @@ import PatientList from './components/admin/PatientList';
 import EmergencyRequestList from './components/admin/EmergencyRequestList';
 import ScheduleDonorList from './components/admin/ScheduleDonorList';
 import NotificationList from './components/admin/NotificationList';
+import StatusPage from './components/admin/StatusPage';
+import ChangePasswordPage from './components/admin/ChangePasswordPage';
 
 function App() {
   const navigate = useNavigate();
@@ -112,6 +114,8 @@ function App() {
     {currentView === "emergencyrequest" && <EmergencyRequestList  userType={userType}/>}
     {currentView === "scheduledonor" && <ScheduleDonorList  userType={userType}/>}
     {currentView === "notifications" && <NotificationList  userType={userType}/>}
+    {currentView === "StatusPage" && <StatusPage userType={userType} />}
+    {currentView === "changePassword" && <ChangePasswordPage userType={userType}/>}
     </div>
 </div>
 

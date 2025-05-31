@@ -59,7 +59,7 @@ const AdminSidebar = ({ setCurrentView }) => {
         </button>
 
         <button
-          onClick={() => setCurrentView("status")}
+          onClick={() => setCurrentView("StatusPage")}
           className="flex items-center gap-2 hover:text-[#840000]"
         >
           <CheckCircle size={20} /> Status
@@ -74,10 +74,11 @@ const AdminSidebar = ({ setCurrentView }) => {
           <User size={20} /> Profile
         </button>
 
-        <button className="flex items-center gap-2 hover:text-[#840000]">
-          <a href="/changepassword" className="flex gap-2">
+        <button 
+          className="flex items-center gap-2 hover:text-[#840000]"
+          onClick={() => setCurrentView("changePassword")}
+        >
             <KeyRound size={20} /> Change Password
-          </a>
         </button>
 
         <button className="flex items-center gap-2 hover:text-[#840000]">

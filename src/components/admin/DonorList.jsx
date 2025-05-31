@@ -177,7 +177,7 @@ const DonorList = () => {
             <div className="flex justify-end gap-4 mt-6">
               <button
                 onClick={handleSaveClick}
-                className="bg-green-600 text-white px-4 py-2 rounded"
+                className="bg-[#840000] text-white px-4 py-2 rounded"
               >
                 Save Change
               </button>
